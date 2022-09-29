@@ -5,12 +5,13 @@ sock = socket.socket()
 sock.setblocking(1)
 sock.connect(('localhost', 9090))
 
-msg = input('Введите сообщение: ')
+while True:
+    msg = input('Введите сообщение: ')
+    sock.send(msg.encode())
+    if msg == 'exit':
+        break
 
-sock.send(msg.encode())
-
-data = sock.recv(1024)
+    data = sock.recv(1024)
+    print(data.decode())
 
 sock.close()
-
-print(data.decode())

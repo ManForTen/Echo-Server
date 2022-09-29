@@ -9,12 +9,20 @@ print(addr)
 msg = ''
 
 while True:
-	data = conn.recv(1024)
+	print('Прием данных')
+	try:
+		data = conn.recv(1024)
+	except (ConnectionAbortedError):
+		print('Ошибка!')
+	msg = data.decode()
+	print(msg)
+	if msg == 'shutdown':
+		break
 	if not data:
 		break
-	msg += data.decode()
+
 	conn.send(data)
 
-print(msg)
+
 
 conn.close()
