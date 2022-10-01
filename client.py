@@ -8,7 +8,7 @@ sock.connect(('localhost', 9090))
 while True:
     msg = input('Введите сообщение: ')
     sock.send(msg.encode())
-    if msg == 'exit':
+    if msg == 'exit' or msg == 'server off':
         break
 
     data = sock.recv(1024)

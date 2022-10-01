@@ -2,8 +2,9 @@ import socket
 
 sock = socket.socket()
 sock.bind(('', 9090))
-sock.listen(0)
+sock.listen(1)
 print('Успешное подключение!')
+print('Введите server off, для отключения сервера.')
 conn, addr = sock.accept()
 print(addr)
 msg = ''
@@ -17,7 +18,7 @@ while True:
 
 	msg = data.decode()
 	print(msg)
-	if msg == 'shutdown':
+	if msg == 'server off':
 		break
 	if not data:
 		break
