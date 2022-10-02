@@ -18,7 +18,6 @@ while True:
 			data = conn.recv(1024)
 		except (ConnectionAbortedError, ConnectionResetError):
 			print('Ошибка!')
-
 		msg = data.decode()
 		print(msg)
 		if msg == 'server off':
