@@ -2,9 +2,12 @@ import socket
 
 breaker = 0
 
-sock = socket.socket()
-sock.bind(('', 9090))
-sock.listen(0)
+TYPE = socket.AF_INET
+PROTOCOL = socket.SOCK_STREAM
+
+sock = socket.socket(TYPE,PROTOCOL)
+sock.bind(('', 9089))
+sock.listen(1)
 
 print('Успешное подключение!')
 print('Введите server off, для отключения сервера.')
