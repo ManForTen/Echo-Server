@@ -6,7 +6,7 @@ sock.connect(('localhost', 9090))
 
 while True:
     msg = input('Введите сообщение: ')
-    if msg == 'exit':
+    if msg == 'exit' or msg == 'server off':
         break
     sock.send(msg.encode())
 
