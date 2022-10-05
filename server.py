@@ -1,4 +1,5 @@
 import socket
+import random
 
 f = open('log.txt', 'w')
 
@@ -8,7 +9,16 @@ TYPE = socket.AF_INET
 PROTOCOL = socket.SOCK_STREAM
 
 sock = socket.socket(TYPE,PROTOCOL)
-sock.bind(('', 9090))
+port = 9090
+while True:
+	try:
+		sock.bind(('', port))
+		f.write('Испоьзуемый порт: ' + str(port))
+		print('Испоьзуемый порт:',port)
+		break
+	except OSError:
+		print('Порт',port,'занят!')
+		port = random.randint(1024,65300)
 sock.listen(1)
 f.write('Успешное подключение!')
 print('Успешное подключение!')
